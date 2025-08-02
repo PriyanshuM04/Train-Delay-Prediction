@@ -16,7 +16,7 @@ for train_no in train_numbers:
     if data.get("ResponseCode") == "200" and "Route" in data:
         route = data["Route"]
         df = pd.DataFrame(route)[["StationName", "StationCode", "ArrivalTime", "DepartureTime", "Distance"]]
-        df["TrainNumber"] = train_no
+        df.insert(0, "TrainNumber", train_no)
 
         file_name = os.path.join(output_folder, f"{train_no}_route.csv")
         df.to_csv(file_name, index = False)

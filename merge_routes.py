@@ -2,7 +2,7 @@ import pandas as pd
 import os
 
 routes_folder = "Routes"
-output_folder = "MasterData"
+output_folder = "MergedData"
 output_file = "master_routes.csv"
 
 os.makedirs(output_folder, exist_ok=True)
