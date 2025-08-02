@@ -1,8 +1,8 @@
 import pandas as pd
 import os
 
-routes_folder = "Routes"
-output_folder = "MergedData"
+routes_folder = "datasets/raw/Routes"
+output_folder = "datasets/processed"
 output_file = "master_routes.csv"
 
 os.makedirs(output_folder, exist_ok=True)

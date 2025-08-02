@@ -5,7 +5,7 @@ import os
 API_KEY = "0416b07540babf9356cbe96262fd6c81"
 train_numbers = ['12305', '12801', '12306', '12002', '12951', '12245', '12953', '12860', '12301', '12903']
 
-output_folder = "Routes"
+output_folder = "datasets/raw/Routes"
 os.makedirs(output_folder, exist_ok=True)
 
 for train_no in train_numbers:
