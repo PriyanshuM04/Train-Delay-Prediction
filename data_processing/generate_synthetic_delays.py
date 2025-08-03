@@ -107,7 +107,7 @@ for train in train_numbers:
 
 # ======== Save to CSV ========
 df = pd.DataFrame(synthetic_rows, columns=[
-    "Train Number", "Date", "Distance", "Weather", "FestivalImpact", "TimeOfDay", "DelayMinutes"
+    "TrainNumber", "Date", "Distance", "Weather", "FestivalImpact", "TimeOfDay", "DelayMinutes"
 ])
 
 df.to_csv(OUTPUT_FILE, index=False)
