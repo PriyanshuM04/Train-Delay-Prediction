@@ -5,7 +5,7 @@ from datetime import datetime, timedelta
 import os
 
 # ======== CONFIG ========
-ROUTES_FILE = "datasets/processed/master_routes.csv"  # Your merged routes dataset
+ROUTES_FILE = "datasets/processed/master_routes.csv"  
 OUTPUT_FILE = "datasets/processed/synthetic_delay_data.csv"
 
 # Create folder if not exists
@@ -13,8 +13,6 @@ os.makedirs("datasets/processed", exist_ok=True)
 
 # ======== LOAD ROUTES ========
 routes = pd.read_csv(ROUTES_FILE)
-
-# Unique train numbers
 train_numbers = routes["TrainNumber"].unique()
 
 # ======== Helper Functions ========
@@ -75,21 +73,17 @@ def get_time_of_day(departure_time):
 
 # ======== Generate synthetic data ========
 synthetic_rows = []
-
 start_date = datetime(2024, 1, 1)
 end_date = datetime(2024, 12, 31)
 num_days = (end_date - start_date).days + 1
 
 for train in train_numbers:
-    # Distance for train (from last station row)
     train_distance = routes[routes["TrainNumber"] == train]["Distance"].max()
-
     for i in range(num_days):
         current_date = start_date + timedelta(days=i)
 
         weather = get_random_weather()
         festival = get_random_festival()
-        # Simulate departure time (random for synthetic data)
         departure_time = datetime.strptime(random.choice(["06:00", "14:00", "20:00", "23:00"]), "%H:%M")
         time_of_day = get_time_of_day(departure_time)
 
@@ -109,6 +103,5 @@ for train in train_numbers:
 df = pd.DataFrame(synthetic_rows, columns=[
     "TrainNumber", "Date", "Distance", "Weather", "FestivalImpact", "TimeOfDay", "DelayMinutes"
 ])
-
 df.to_csv(OUTPUT_FILE, index=False)
 print(f"✅ Synthetic delay data generated and saved to {OUTPUT_FILE}")
