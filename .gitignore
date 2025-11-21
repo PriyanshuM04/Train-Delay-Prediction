@@ -1,0 +1,12 @@
+.env
+*.env
+
+# Python cruft
+__pycache__/
+*.pyc
+
+# Model files (optional)
+models/*.pkl
+
+# Streamlit temp
+.streamlit/
